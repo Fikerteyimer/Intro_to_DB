@@ -1,14 +1,28 @@
+-- ==========================================================
+-- DATABASE: alx_book_store
+-- DESCRIPTION: A magical database for your dream online bookstore adventure!
+-- ==========================================================
 
+-- Drop the database if it already exists
+DROP DATABASE IF EXISTS alx_book_store;
 
+-- Create the database
 CREATE DATABASE alx_book_store;
+
+-- Use the database
 USE alx_book_store;
 
-
+-- ==========================================================
+-- TABLE: AUTHORS
+-- ==========================================================
 CREATE TABLE AUTHORS (
     author_id INT AUTO_INCREMENT PRIMARY KEY,
     author_name VARCHAR(215) NOT NULL
 );
 
+-- ==========================================================
+-- TABLE: BOOKS
+-- ==========================================================
 CREATE TABLE BOOKS (
     book_id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(130) NOT NULL,
@@ -20,7 +34,9 @@ CREATE TABLE BOOKS (
         ON UPDATE CASCADE
 );
 
-
+-- ==========================================================
+-- TABLE: CUSTOMERS
+-- ==========================================================
 CREATE TABLE CUSTOMERS (
     customer_id INT AUTO_INCREMENT PRIMARY KEY,
     customer_name VARCHAR(215) NOT NULL,
@@ -28,7 +44,9 @@ CREATE TABLE CUSTOMERS (
     address TEXT
 );
 
-
+-- ==========================================================
+-- TABLE: ORDERS
+-- ==========================================================
 CREATE TABLE ORDERS (
     order_id INT AUTO_INCREMENT PRIMARY KEY,
     customer_id INT,
@@ -37,6 +55,10 @@ CREATE TABLE ORDERS (
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );
+
+-- ==========================================================
+-- TABLE: ORDER_DETAILS
+-- ==========================================================
 CREATE TABLE ORDER_DETAILS (
     orderdetailid INT AUTO_INCREMENT PRIMARY KEY,
     order_id INT,
@@ -50,3 +72,6 @@ CREATE TABLE ORDER_DETAILS (
         ON UPDATE CASCADE
 );
 
+-- ==========================================================
+-- END OF SCRIPT
+-- ==========================================================
