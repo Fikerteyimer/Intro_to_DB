@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS Order_Details (
     order_detail_id INT AUTO_INCREMENT PRIMARY KEY,
     order_id INT NOT NULL,
     book_id INT NOT NULL,
-    quantity DOUBLE NOT NULL,  -- Added quantity field
+    quantity DOUBLE NOT NULL,  -- Corrected: Added quantity field to represent the number of books ordered
     FOREIGN KEY (order_id) REFERENCES Orders(order_id),  -- Foreign key referencing Orders
     FOREIGN KEY (book_id) REFERENCES Books(book_id)     -- Foreign key referencing Books
 );
