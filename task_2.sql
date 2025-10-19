@@ -1,56 +1,56 @@
 -- task_2.sql
--- Script to create tables in alx_book_store
+-- Create all tables in alx_book_store database
 
--- Make sure we are using the correct database
+-- Create database if it does not exist
 CREATE DATABASE IF NOT EXISTS alx_book_store;
 USE alx_book_store;
 
--- Create authors table
-CREATE TABLE IF NOT EXISTS authors (
-    author_id INT AUTO_INCREMENT PRIMARY KEY,
-    first_name VARCHAR(50) NOT NULL,
-    last_name VARCHAR(50) NOT NULL,
-    birth_date DATE,
-    country VARCHAR(50)
+-- Create Authors table
+CREATE TABLE IF NOT EXISTS Authors (
+    Author_id INT AUTO_INCREMENT PRIMARY KEY,
+    First_name VARCHAR(50) NOT NULL,
+    Last_name VARCHAR(50) NOT NULL,
+    Birth_date DATE,
+    Country VARCHAR(50)
 );
 
--- Create books table
-CREATE TABLE IF NOT EXISTS books (
-    book_id INT AUTO_INCREMENT PRIMARY KEY,
-    title VARCHAR(100) NOT NULL,
-    author_id INT NOT NULL,
-    genre VARCHAR(50),
-    price DECIMAL(10,2) NOT NULL,
-    published_date DATE,
-    FOREIGN KEY (author_id) REFERENCES authors(author_id) ON DELETE CASCADE
+-- Create Books table
+CREATE TABLE IF NOT EXISTS Books (
+    Book_id INT AUTO_INCREMENT PRIMARY KEY,
+    Title VARCHAR(100) NOT NULL,
+    Author_id INT NOT NULL,
+    Genre VARCHAR(50),
+    Price DECIMAL(10,2) NOT NULL,
+    Published_date DATE,
+    FOREIGN KEY (Author_id) REFERENCES Authors(Author_id) ON DELETE CASCADE
 );
 
--- Create customers table
-CREATE TABLE IF NOT EXISTS customers (
-    customer_id INT AUTO_INCREMENT PRIMARY KEY,
-    first_name VARCHAR(50) NOT NULL,
-    last_name VARCHAR(50) NOT NULL,
-    email VARCHAR(100) UNIQUE NOT NULL,
-    phone VARCHAR(20),
-    address VARCHAR(255)
+-- Create Customers table
+CREATE TABLE IF NOT EXISTS Customers (
+    Customer_id INT AUTO_INCREMENT PRIMARY KEY,
+    First_name VARCHAR(50) NOT NULL,
+    Last_name VARCHAR(50) NOT NULL,
+    Email VARCHAR(100) UNIQUE NOT NULL,
+    Phone VARCHAR(20),
+    Address VARCHAR(255)
 );
 
--- Create orders table
-CREATE TABLE IF NOT EXISTS orders (
-    order_id INT AUTO_INCREMENT PRIMARY KEY,
-    customer_id INT NOT NULL,
-    order_date DATETIME DEFAULT CURRENT_TIMESTAMP,
-    total_amount DECIMAL(10,2) NOT NULL,
-    FOREIGN KEY (customer_id) REFERENCES customers(customer_id) ON DELETE CASCADE
+-- Create Orders table
+CREATE TABLE IF NOT EXISTS Orders (
+    Order_id INT AUTO_INCREMENT PRIMARY KEY,
+    Customer_id INT NOT NULL,
+    Order_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    Total_amount DECIMAL(10,2) NOT NULL,
+    FOREIGN KEY (Customer_id) REFERENCES Customers(Customer_id) ON DELETE CASCADE
 );
 
--- Create order_details table
-CREATE TABLE IF NOT EXISTS order_details (
-    order_detail_id INT AUTO_INCREMENT PRIMARY KEY,
-    order_id INT NOT NULL,
-    book_id INT NOT NULL,
-    quantity INT NOT NULL,
-    price DECIMAL(10,2) NOT NULL,
-    FOREIGN KEY (order_id) REFERENCES orders(order_id) ON DELETE CASCADE,
-    FOREIGN KEY (book_id) REFERENCES books(book_id) ON DELETE CASCADE
+-- Create Order_Details table
+CREATE TABLE IF NOT EXISTS Order_Details (
+    Order_detail_id INT AUTO_INCREMENT PRIMARY KEY,
+    Order_id INT NOT NULL,
+    Book_id INT NOT NULL,
+    Quantity INT NOT NULL,
+    Price DECIMAL(10,2) NOT NULL,
+    FOREIGN KEY (Order_id) REFERENCES Orders(Order_id) ON DELETE CASCADE,
+    FOREIGN KEY (Book_id) REFERENCES Books(Book_id) ON DELETE CASCADE
 );
