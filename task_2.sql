@@ -17,8 +17,9 @@ CREATE TABLE IF NOT EXISTS BOOKS (
     title VARCHAR(255) NOT NULL,
     author_id INT NOT NULL,
     price DECIMAL(10, 2) NOT NULL,
-    FOREIGN KEY (author_id) REFERENCES AUTHORS(author_id)
+    FOREIGN KEY (author_id) REFERENCES Authors(author_id)
 );
+
 
 -- Customers table
 CREATE TABLE IF NOT EXISTS CUSTOMERS (
@@ -35,7 +36,7 @@ CREATE TABLE IF NOT EXISTS ORDERS (
     customer_id INT NOT NULL,
     order_date DATE NOT NULL,
     total_amount DECIMAL(10, 2) NOT NULL,
-    FOREIGN KEY (customer_id) REFERENCES CUSTOMERS(customer_id)
+    FOREIGN KEY (customer_id) REFERENCES Customers(customer_id)
 );
 
 -- Order_Details table
